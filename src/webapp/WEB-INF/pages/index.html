@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table of users</title>
+    <style type="text/css">
+        TABLE {
+            width: 300px;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+        }
+        TD, TH {
+            padding: 6px;
+        }
+        TH {
+            text-align: left;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Users Table</h1>
+        <table>
+            <thead>
+            <tr>
+                <th> ID </th>
+                <th> NAME </th>
+                <th> POST </th>
+                <th> DELETE </th>
+                <th> UPDATE </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="us:${tableOfUsers}">
+                <td th:text="${us.Id}"></td>
+                <td th:text="${us.Name}"></td>
+                <td th:text="${us.Post}"></td>
+                <td> <a th:href="@{/deleteUser/{id}(id=${us.id})}">Delete</a></td>
+                <td> <a th:href="@{/updateUser/{id}(id=${us.getId})}">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+
+    <form action="/signup">
+        <button>Add</button>
+    </form>
+</body>
+</html>
